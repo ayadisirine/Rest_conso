@@ -9,6 +9,7 @@ namespace Rocket_Elevators_Rest_API.Models
         {
             Batteries = new HashSet<Batteries>();
             BuildingDetails = new HashSet<BuildingDetails>();
+            Interventions = new HashSet<Interventions>();
         }
 
         public long Id { get; set; }
@@ -24,5 +25,6 @@ namespace Rocket_Elevators_Rest_API.Models
         public virtual Customers Customer { get; set; }
         public virtual ICollection<Batteries> Batteries { get; set; }
         public virtual ICollection<BuildingDetails> BuildingDetails { get; set; }
+        public virtual ICollection<Interventions> Interventions { get; set; }
     }
 }

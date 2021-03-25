@@ -30,6 +30,7 @@ namespace Rocket_Elevators_Rest_API.Data
         public virtual DbSet<Customers> Customers { get; set; }
         public virtual DbSet<Elevators> Elevators { get; set; }
         public virtual DbSet<Employees> Employees { get; set; }
+        public virtual DbSet<Interventions> Interventions { get; set; }
         public virtual DbSet<Leads> Leads { get; set; }
         public virtual DbSet<Quotes> Quotes { get; set; }
         public virtual DbSet<SchemaMigrations> SchemaMigrations { get; set; }
@@ -324,9 +325,7 @@ namespace Rocket_Elevators_Rest_API.Data
                     .HasColumnName("building_id")
                     .HasColumnType("bigint(20)");
 
-                entity.Property(e => e.InformationKey)
-                    .HasColumnName("information_key")
-                    .HasMaxLength(255);
+                entity.Property(e => e.InformationKey).HasColumnName("information_key");
 
                 entity.Property(e => e.Value)
                     .HasColumnName("value")
@@ -489,7 +488,7 @@ namespace Rocket_Elevators_Rest_API.Data
 
             modelBuilder.Entity<Elevators>(entity =>
             {
-               entity.ToTable("elevators");
+                entity.ToTable("elevators");
 
                 entity.HasIndex(e => e.ColumnId)
                     .HasName("index_elevators_on_column_id");
@@ -547,8 +546,6 @@ namespace Rocket_Elevators_Rest_API.Data
                     .WithMany(p => p.Elevators)
                     .HasForeignKey(d => d.ColumnId)
                     .HasConstraintName("fk_rails_69442d7bc2");
-
-
             });
 
             modelBuilder.Entity<Employees>(entity =>
@@ -582,6 +579,77 @@ namespace Rocket_Elevators_Rest_API.Data
                     .WithMany(p => p.Employees)
                     .HasForeignKey(d => d.UserId)
                     .HasConstraintName("fk_rails_dcfd3d4fc3");
+            });
+
+            modelBuilder.Entity<Interventions>(entity =>
+            {
+                entity.ToTable("interventions");
+
+                entity.HasIndex(e => e.BuildingsId)
+                    .HasName("index_interventions_on_buildings_id");
+
+                entity.HasIndex(e => e.CustomersId)
+                    .HasName("index_interventions_on_customers_id");
+
+                entity.HasIndex(e => e.EmployeesId)
+                    .HasName("index_interventions_on_employees_id");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("bigint(20)");
+
+                entity.Property(e => e.BatteryId)
+                    .HasColumnName("battery_id")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.BuildingsId)
+                    .HasColumnName("buildings_id")
+                    .HasColumnType("bigint(20)");
+
+                entity.Property(e => e.ColumnId)
+                    .HasColumnName("column_id")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.CustomersId)
+                    .HasColumnName("customers_id")
+                    .HasColumnType("bigint(20)");
+
+                entity.Property(e => e.ElevatorId)
+                    .HasColumnName("elevator_id")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.EmployeeId)
+                    .HasColumnName("employee_id")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.EmployeesId)
+                    .HasColumnName("employees_id")
+                    .HasColumnType("bigint(20)");
+
+                entity.Property(e => e.Report).HasMaxLength(255);
+
+                entity.Property(e => e.Result)
+                    .HasMaxLength(255)
+                    .HasDefaultValueSql("'Incomplete'");
+
+                entity.Property(e => e.Status)
+                    .HasMaxLength(255)
+                    .HasDefaultValueSql("'Pending'");
+
+                entity.HasOne(d => d.Buildings)
+                    .WithMany(p => p.Interventions)
+                    .HasForeignKey(d => d.BuildingsId)
+                    .HasConstraintName("fk_rails_27da12f01e");
+
+                entity.HasOne(d => d.Customers)
+                    .WithMany(p => p.Interventions)
+                    .HasForeignKey(d => d.CustomersId)
+                    .HasConstraintName("fk_rails_f1ab03f3c8");
+
+                entity.HasOne(d => d.Employees)
+                    .WithMany(p => p.Interventions)
+                    .HasForeignKey(d => d.EmployeesId)
+                    .HasConstraintName("fk_rails_6cbcca700b");
             });
 
             modelBuilder.Entity<Leads>(entity =>
@@ -623,8 +691,6 @@ namespace Rocket_Elevators_Rest_API.Data
                 entity.Property(e => e.ProjectName)
                     .HasColumnName("project_name")
                     .HasMaxLength(255);
-
-                entity.Property(e => e.ContactRequestDate).HasColumnName("contact_request_date");
             });
 
             modelBuilder.Entity<Quotes>(entity =>

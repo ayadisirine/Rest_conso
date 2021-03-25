@@ -41,7 +41,7 @@ namespace Rocket_Elevators_Rest_API.Models.Controllers
             //Prepare the query 
             IQueryable<Leads> day30snotcustomers =
             from l in _context.Leads
-            where l.ContactRequestDate  >= answer
+            where l.contact_request_date  >= answer
             select l;
             return day30snotcustomers.ToList();
          }               
