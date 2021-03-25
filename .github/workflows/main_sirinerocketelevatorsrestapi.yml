@@ -32,5 +32,5 @@ id: deploy-to-webapp
       with:
         app-name: 'sirinerocketelevatorsrestapi'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_6621c98956394ac9b2c526168bdf7546 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_319eeb77efba444084611d4b99621d3e }}
         package: ${{env.DOTNET_ROOT}}/myapp 
