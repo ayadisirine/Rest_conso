@@ -34,7 +34,7 @@ namespace Rocket_Elevators_Rest_API.Models.Controllers
             return Customers.ToList();
         }
 
-        [HttpGet("{email}")]
+        [HttpGet("email/{email}")]
         // User is free to check different status : in our case just make intervention 
         public IEnumerable<Customers> checkUser(string email)
         {
