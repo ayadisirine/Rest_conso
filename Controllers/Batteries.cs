@@ -97,6 +97,18 @@ namespace Rocket_Elevators_Rest_API.Models.Controllers
             return CreatedAtAction("GetBattery", new { id = battery.Id }, battery);
         }
 
+        [HttpGet("/building/{id}")]
+        public ActionResult<List<Batteries>> GetbuildingBatteries(long id)
+        {
+            //Prepare the request 
+            IQueryable<Batteries> batteries = from l in _context.Batteries
+            //define condition status should be equal to given values 
+                                             where l.BuildingId == id
+                                             select l;
+            //show results 
+            return batteries.ToList();
+        }  
+
      
       // DELETE: Batteries
         [HttpDelete("{id}")]

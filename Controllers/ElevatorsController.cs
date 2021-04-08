@@ -52,6 +52,19 @@ namespace Rocket_Elevators_Rest_API.Controllers
 
             return elevator;
         }
+
+
+        [HttpGet("/columns/{id}")]
+        public ActionResult<List<Elevators>> GetcolumnElevators(long id)
+        {
+            //Prepare the request 
+            IQueryable<Elevators> elevators = from l in _context.Elevators
+            //define condition status should be equal to given values 
+                                             where l.Id == id
+                                             select l;
+            //show results 
+            return elevators.ToList();
+        }          
         
         // PUT api/elevators/id
         // Request to change elevator status 

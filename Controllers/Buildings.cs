@@ -39,6 +39,20 @@ namespace Rocket_Elevators_Rest_API.Models.Controllers
             select bat;
             return ToFixBuildingsList.Distinct().ToList();
         }
+
+      // GET: 
+        // Retrieving a list of 
+       [HttpGet("/employee/{id}")]
+        public ActionResult<List<Buildings>> GetcustomerBuildings(long id)
+        {
+            //Prepare the request 
+            IQueryable<Buildings> buildings = from l in _context.Buildings
+            //define condition status should be equal to given values 
+                                             where l.CustomerId == id
+                                             select l;
+            //show results 
+            return buildings.ToList();
+        }        
        
 
       

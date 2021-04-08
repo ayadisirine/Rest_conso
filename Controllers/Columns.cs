@@ -117,6 +117,18 @@ namespace Rocket_Elevators_Rest_API.Models.Controllers
             
         }
 
+        [HttpGet("/battery/{id}")]
+        public ActionResult<List<Columns>> GetbatteryColumns(long id)
+        {
+            //Prepare the request 
+            IQueryable<Columns> columns = from l in _context.Columns
+            //define condition status should be equal to given values 
+                                             where l.BatteryId == id
+                                             select l;
+            //show results 
+            return columns.ToList();
+        }  
+
         private bool columnExists(long id)
         {
             return _context.Columns.Any(e => e.Id == id);
