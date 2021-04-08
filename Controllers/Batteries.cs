@@ -97,7 +97,7 @@ namespace Rocket_Elevators_Rest_API.Models.Controllers
             return CreatedAtAction("GetBattery", new { id = battery.Id }, battery);
         }
 
-        [HttpGet("/building/{id}")]
+        [HttpGet("building/{id}")]
         public ActionResult<List<Batteries>> GetbuildingBatteries(long id)
         {
             //Prepare the request 

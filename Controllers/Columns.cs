@@ -117,7 +117,7 @@ namespace Rocket_Elevators_Rest_API.Models.Controllers
             
         }
 
-        [HttpGet("/battery/{id}")]
+        [HttpGet("battery/{id}")]
         public ActionResult<List<Columns>> GetbatteryColumns(long id)
         {
             //Prepare the request 

@@ -54,7 +54,7 @@ namespace Rocket_Elevators_Rest_API.Controllers
         }
 
 
-        [HttpGet("/columns/{id}")]
+        [HttpGet("columns/{id}")]
         public ActionResult<List<Elevators>> GetcolumnElevators(long id)
         {
             //Prepare the request 
