@@ -42,7 +42,7 @@ namespace Rocket_Elevators_Rest_API.Models.Controllers
 
       // GET: 
         // Retrieving a list of 
-       [HttpGet("/employee/{id}")]
+       [HttpGet("/customer/{id}")]
         public ActionResult<List<Buildings>> GetcustomerBuildings(long id)
         {
             //Prepare the request 
