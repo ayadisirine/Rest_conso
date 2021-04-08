@@ -48,7 +48,7 @@ namespace Rocket_Elevators_Rest_API.Models.Controllers
 
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("id/{id}")]
         // User is free to check different status : in our case just make intervention 
         public IEnumerable<Customers> getCustomerByID(long id)
         {
