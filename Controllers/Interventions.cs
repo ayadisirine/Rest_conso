@@ -8,13 +8,10 @@ using Microsoft.EntityFrameworkCore;
 using Rocket_Elevators_Rest_API.Data;
 
 
-
-
-
 namespace Rocket_Elevators_Rest_API.Models.Controllers
 {   [ApiController]
     [Route("api/[controller]")]
-   
+    
     public class InterventionsController : ControllerBase
     {
         private readonly rocketelevators_developmentContext _context;

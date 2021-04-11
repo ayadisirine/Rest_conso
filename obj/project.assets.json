@@ -6729,11 +6729,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HP\\Downloads\\Rest_conso\\Rocket-Elevators-Rest-API.csproj",
+      "projectUniqueName": "C:\\Users\\HP\\Desktop\\LastRestAPI\\Rest_conso\\Rocket-Elevators-Rest-API.csproj",
       "projectName": "Rocket-Elevators-Rest-API",
-      "projectPath": "C:\\Users\\HP\\Downloads\\Rest_conso\\Rocket-Elevators-Rest-API.csproj",
+      "projectPath": "C:\\Users\\HP\\Desktop\\LastRestAPI\\Rest_conso\\Rocket-Elevators-Rest-API.csproj",
       "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HP\\Downloads\\Rest_conso\\obj\\",
+      "outputPath": "C:\\Users\\HP\\Desktop\\LastRestAPI\\Rest_conso\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
