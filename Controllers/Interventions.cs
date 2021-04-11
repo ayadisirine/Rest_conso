@@ -70,8 +70,6 @@ and add an end date and time (Timestamp).
         public async Task<IActionResult> PutcompletedInterventionsStatus(long id)
         {
 
-
-
             var intervention = await _context.Interventions.FindAsync(id);
             intervention.Status = "Completed";
             intervention.end_intervention = System.DateTime.Now;     
@@ -92,7 +90,14 @@ and add an end date and time (Timestamp).
             return new OkObjectResult("success");
         }
 
+       [HttpPost]
+        public async Task<ActionResult<Interventions>> PostIntervention(Interventions intervention)
+        {
+            _context.Interventions.Add(intervention);
+            await _context.SaveChangesAsync();
 
+            return CreatedAtAction("GetInterventions", new { id = intervention.Id }, intervention);
+        }
      
 /* GET: Returns all fields of all intervention Request records 
 that do not have a start date and are in "Pending" status. 
