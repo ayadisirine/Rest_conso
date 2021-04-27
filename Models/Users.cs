@@ -18,6 +18,8 @@ namespace Rocket_Elevators_Rest_API.Models
         public bool? SupervisorRole { get; set; }
         public bool? UserRole { get; set; }
 
+
+
         public virtual ICollection<Customers> Customers { get; set; }
         public virtual ICollection<Employees> Employees { get; set; }
     }
