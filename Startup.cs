@@ -31,7 +31,11 @@ namespace Rocket_Elevators_Rest_API
         {
 
     // In general  
-    services.AddCors();      
+        services.AddCors(options => {  
+            options.AddDefaultPolicy(builder => {  
+                builder.WithOrigins("http://sirinerocketelevatorrestapi.azurewebsites.net", "https://sirinerocketelevatorrestapi.azurewebsites.net", "http://localhost:19006/");"  
+            });  
+        });      
 
             services.AddControllers();
             
@@ -70,13 +74,7 @@ namespace Rocket_Elevators_Rest_API
             });
 
     // Shows UseCors with CorsPolicyBuilder.  
-    app.UseCors(builder =>  
-    {  
-        builder  
-        .AllowAnyOrigin()  
-        .AllowAnyMethod()  
-        .AllowAnyHeader();  
-    }); 
+app.UseCors();
         }
     }
 }
