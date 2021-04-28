@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using Rocket_Elevators_Rest_API.Data;
-using Microsoft.AspNetCore.Cors;
+
 
 namespace Rocket_Elevators_Rest_API.Models.Controllers
 {
-    [DisableCors]
+    
     [Route("api/User")]
     [ApiController]
     public class UserController : ControllerBase
