@@ -31,11 +31,7 @@ namespace Rocket_Elevators_Rest_API
         {
 
     // In general  
-        services.AddCors(options => {  
-            options.AddDefaultPolicy(builder => {  
-                builder.WithOrigins("*");  
-            });  
-        });      
+        services.AddCors();      
 
             services.AddControllers();
             
@@ -74,7 +70,14 @@ namespace Rocket_Elevators_Rest_API
             });
 
     // Shows UseCors with CorsPolicyBuilder.  
-app.UseCors();
+    // Shows UseCors with CorsPolicyBuilder.  
+    app.UseCors(builder =>  
+    {  
+        builder  
+        .AllowAnyOrigin()  
+        .AllowAnyMethod()  
+        .AllowAnyHeader();  
+    }); 
         }
     }
 }
